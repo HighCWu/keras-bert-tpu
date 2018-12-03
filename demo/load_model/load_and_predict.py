@@ -21,6 +21,9 @@ if 'COLAB_TPU_ADDR' in os.environ:
     )
     model = tf.contrib.tpu.keras_to_tpu_model(model, strategy=strategy)
     model.compile('adam', 'sparse_categorical_crossentropy')
+    batch_size = 8
+else:
+    batch_size = 1
 
 tokens = ['[CLS]', '[MASK]', '[MASK]'] + list('是利用符号语言研究数量、结构、变化以及空间等概念的一门学科') + ['[SEP]']
 
@@ -31,9 +34,9 @@ with codecs.open(dict_path, 'r', 'utf8') as reader:
         token_dict[token] = len(token_dict)
 token_dict_rev = {v: k for k, v in token_dict.items()}
 
-token_input = np.asarray([[token_dict[token] for token in tokens] + [0] * (512 - len(tokens))])
-seg_input = np.asarray([[0] * len(tokens) + [0] * (512 - len(tokens))])
-mask_input = np.asarray([[0, 1, 1] + [0] * (512 - 3)])
+token_input = np.asarray([[token_dict[token] for token in tokens] + [0] * (512 - len(tokens)) for i in range(batch_size)])
+seg_input = np.asarray([[0] * len(tokens) + [0] * (512 - len(tokens)) for i in range(batch_size)])
+mask_input = np.asarray([[0, 1, 1] + [0] * (512 - 3) for i in range(batch_size)])
 
 print(token_input[0][:len(tokens)])
 
