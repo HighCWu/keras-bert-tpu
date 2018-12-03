@@ -1,20 +1,18 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='keras-bert',
-    version='0.23.0',
+    name='keras-bert-tpu',
+    version='0.1.0',
     packages=find_packages(),
-    url='https://github.com/CyberZHG/keras-bert',
+    url='https://github.com/HighCWu/keras-bert-tpu',
     license='MIT',
-    author='CyberZHG',
-    author_email='CyberZHG@gmail.com',
-    description='BERT implemented in Keras',
+    author='HighCWu',
+    author_email='HighCWu@163.com',
+    description='BERT implemented in Keras of Tensorflow package on TPU',
     long_description=open('README.rst', 'r').read(),
     install_requires=[
         'numpy',
-        'keras',
-        'keras-pos-embd==0.6.0',
-        'keras-transformer==0.11.0',
+        'tf-nightly', # After tensorflow 1.3.0 release, it will change back to 'tensorflow>=1.3.0'
     ],
     classifiers=(
         "Programming Language :: Python :: 2.7",

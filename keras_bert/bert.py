@@ -2,11 +2,7 @@ import random
 import keras
 import numpy as np
 import tensorflow as tf
-from keras_pos_embd import PositionEmbedding
-from keras_layer_normalization import LayerNormalization
-from keras_transformer import get_encoders
-from keras_transformer import get_custom_objects as get_encoder_custom_objects
-from .layers import (get_inputs, get_embedding, TokenEmbedding, EmbeddingSimilarity, Masked, Extract)
+from .layers import (get_inputs, get_embedding, get_encoders, get_encoder_custom_objects, CompatibilityDense, LayerNormalization, PositionEmbedding, TokenEmbedding, EmbeddingSimilarity, Masked, Extract)
 
 
 TOKEN_PAD = ''  # Token for padding
@@ -83,7 +79,7 @@ def get_model(token_num,
         )
     if not training:
         return inputs[:2], transformed
-    mlm_dense_layer = keras.layers.Dense(
+    mlm_dense_layer = CompatibilityDense(
         units=embed_dim,
         activation=feed_forward_activation,
         name='MLM-Dense',
@@ -114,6 +110,7 @@ def get_model(token_num,
 def get_custom_objects():
     """Get all custom objects for loading saved models."""
     custom_objects = get_encoder_custom_objects()
+    custom_objects['CompatibilityDense'] = CompatibilityDense
     custom_objects['PositionEmbedding'] = PositionEmbedding
     custom_objects['TokenEmbedding'] = TokenEmbedding
     custom_objects['EmbeddingSimilarity'] = EmbeddingSimilarity

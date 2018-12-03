@@ -1,14 +1,16 @@
-# Keras BERT
+# Keras BERT TPU
 
-[![Travis](https://travis-ci.org/CyberZHG/keras-bert.svg)](https://travis-ci.org/CyberZHG/keras-bert)
-[![Coverage](https://coveralls.io/repos/github/CyberZHG/keras-bert/badge.svg?branch=master)](https://coveralls.io/github/CyberZHG/keras-bert)
+[![Travis](https://travis-ci.org/HighCWu/keras-bert.svg)](https://travis-ci.org/HighCWu/keras-bert)
+[![Coverage](https://coveralls.io/repos/github/HighCWu/keras-bert/badge.svg?branch=master)](https://coveralls.io/github/HighCWu/keras-bert)
+
+This is a fork of [CyberZHG/keras_bert](https://github.com/CyberZHG/keras-bert) which supports Keras BERT on TPU.
 
 Implementation of the [BERT](https://arxiv.org/pdf/1810.04805.pdf). Official pre-trained models could be loaded for feature extraction and prediction.
 
 ## Install
 
 ```bash
-pip install keras-bert
+pip install keras-bert-tpu
 ```
 
 ## Usage

@@ -1,3 +1,4 @@
+import os
 import sys
 import codecs
 import numpy as np
@@ -7,10 +8,19 @@ from keras_bert import load_trained_model_from_checkpoint
 if len(sys.argv) != 4:
     print('python load_model.py CONFIG_PATH CHECKPOINT_PATH DICT_PATH')
 
-config_path, checkpoint_path, dict_path = tuple(sys.argv[1:])
+config_path, checkpoint_path, dict_path = tuple(sys.argv[1:]) # pylint: disable=E0632
 
 model = load_trained_model_from_checkpoint(config_path, checkpoint_path)
 model.summary(line_length=120)
+
+if 'COLAB_TPU_ADDR' in os.environ:
+    import tensorflow as tf
+    tpu_address = 'grpc://' + os.environ['COLAB_TPU_ADDR']
+    strategy = tf.contrib.tpu.TPUDistributionStrategy(
+            tf.contrib.cluster_resolver.TPUClusterResolver(tpu=tpu_address)
+    )
+    model = tf.contrib.tpu.keras_to_tpu_model(model, strategy=strategy)
+    model.compile('adam', 'sparse_categorical_crossentropy')
 
 tokens = ['[CLS]', '语', '言', '模', '型', '[SEP]']
 

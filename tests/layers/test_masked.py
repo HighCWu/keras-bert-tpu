@@ -1,7 +1,7 @@
 import unittest
 import keras
 import numpy as np
-from keras_transformer import gelu, get_encoders
+from keras_bert.bert import gelu, get_encoders
 from keras_bert.layers import get_inputs, get_embedding, Masked
 
 
