@@ -6,6 +6,10 @@
 This is a fork of [CyberZHG/keras_bert](https://github.com/CyberZHG/keras-bert) which supports Keras BERT on TPU.
 
 Implementation of the [BERT](https://arxiv.org/pdf/1810.04805.pdf). Official pre-trained models could be loaded for feature extraction and prediction.
+## Colab Demo
+
+[HighCWu/keras-bert-tpu](https://colab.research.google.com/github/HighCWu/keras-bert-tpu/blob/master/demo/load_model/load_and_predict.ipynb)
+
 
 ## Install
 
