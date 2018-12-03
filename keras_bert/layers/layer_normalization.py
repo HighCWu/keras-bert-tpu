@@ -1,5 +1,5 @@
-import keras
-import keras.backend as K
+from tensorflow import keras
+import tensorflow.keras.backend as K
 from tensorflow.python.keras import engine  # pylint: disable=E0611
 
 

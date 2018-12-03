@@ -1,4 +1,4 @@
-from keras.layers import Dense
+from tensorflow.keras.layers import Dense  # pylint: disable=E0401
 
 
 class CompatibilityDense(Dense):

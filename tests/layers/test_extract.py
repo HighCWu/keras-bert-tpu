@@ -1,5 +1,5 @@
 import unittest
-import keras
+from tensorflow import keras
 import numpy as np
 from keras_bert.layers import Extract
 

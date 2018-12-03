@@ -1,4 +1,4 @@
-import keras
+from tensorflow import keras
 import numpy as np
 from .layer_normalization import LayerNormalization
 from .multi_head_attention import MultiHeadAttention

@@ -1,5 +1,5 @@
 import json
-import keras
+from tensorflow import keras
 import numpy as np
 import tensorflow as tf
 from .bert import get_model

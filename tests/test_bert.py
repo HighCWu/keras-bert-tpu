@@ -2,7 +2,7 @@ import unittest
 import os
 import tempfile
 import random
-import keras
+from tensorflow import keras
 import numpy as np
 from keras_bert import gelu, get_model, get_custom_objects, get_base_dict, gen_batch_inputs
 

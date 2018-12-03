@@ -1,5 +1,5 @@
-import keras
-import keras.backend as K
+from tensorflow import keras
+import tensorflow.keras.backend as K
 import tensorflow as tf
 
 
@@ -226,7 +226,7 @@ class MultiHeadAttention(keras.layers.Layer):
             return mask
         seq_len = K.shape(mask)[1]
         mask = K.expand_dims(mask, axis=1)
-        mask = K.tile(mask, K.stack([1, head_num, 1]))
+        mask = tf.tile(mask, K.stack([1, head_num, 1]))
         return K.reshape(mask, (-1, seq_len))
 
     def call(self, inputs, mask=None):

@@ -1,6 +1,6 @@
 # Keras BERT TPU
 
-[![Travis](https://travis-ci.org/HighCWu/keras-bert-tpu.svg)](https://travis-ci.org/HighCWu/keras-bert-tpu)
+[![Travis](https://travis-ci.org/HighCWu/keras-bert-tpu.svg?branch=master)](https://travis-ci.org/HighCWu/keras-bert-tpu)
 [![Coverage](https://coveralls.io/repos/github/HighCWu/keras-bert-tpu/badge.svg?branch=master)](https://coveralls.io/github/HighCWu/keras-bert-tpu)
 
 This is a fork of [CyberZHG/keras_bert](https://github.com/CyberZHG/keras-bert) which supports Keras BERT on TPU.
