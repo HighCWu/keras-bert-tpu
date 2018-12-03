@@ -2,7 +2,9 @@ import random
 import keras
 import numpy as np
 import tensorflow as tf
-from .layers import (get_inputs, get_embedding, get_encoders, get_encoder_custom_objects, CompatibilityDense, LayerNormalization, PositionEmbedding, TokenEmbedding, EmbeddingSimilarity, Masked, Extract)
+from .layers import (get_inputs, get_embedding, get_encoders, get_encoder_custom_objects,
+                     CompatibilityDense, LayerNormalization, PositionEmbedding, TokenEmbedding,
+                     EmbeddingSimilarity, Masked, Extract)
 
 
 TOKEN_PAD = ''  # Token for padding
@@ -63,7 +65,8 @@ def get_model(token_num,
     transformed = embed_layer
     if custom_layers is not None:
         kwargs = {}
-        if keras.utils.generic_utils.has_arg(custom_layers, 'trainable'):
+        from tensorflow.python.keras import utils
+        if utils.generic_utils.has_arg(custom_layers, 'trainable'):
             kwargs['trainable'] = training
         transformed = custom_layers(transformed, **kwargs)
     else:

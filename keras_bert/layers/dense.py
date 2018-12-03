@@ -1,4 +1,5 @@
-from keras.layers import Dense 
+from keras.layers import Dense
+
 
 class CompatibilityDense(Dense):
     def get_config(self):

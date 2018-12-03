@@ -3,6 +3,7 @@ import keras.backend as K
 import tensorflow as tf
 from .layer_normalization import LayerNormalization
 
+
 class PositionEmbedding(keras.layers.Layer):
     """Turn integers (positions) into dense vectors of fixed size.
     eg. [[-4], [10]] -> [[0.25, 0.1], [0.6, -0.2]]
@@ -128,6 +129,7 @@ class PositionEmbedding(keras.layers.Layer):
             return inputs + pos_embeddings
         return K.concatenate([inputs, pos_embeddings], axis=-1)
 
+
 class TrigPosEmbedding(keras.layers.Layer):
     """Position embedding use sine and cosine functions.
     See: https://arxiv.org/pdf/1706.03762
@@ -227,6 +229,7 @@ class TrigPosEmbedding(keras.layers.Layer):
             output += inputs
         return output
 
+
 class TokenEmbedding(keras.layers.Embedding):
     """Embedding layer with weights returned."""
 
@@ -237,7 +240,7 @@ class TokenEmbedding(keras.layers.Embedding):
         return [super(TokenEmbedding, self).compute_mask(inputs, mask), None]
 
     def call(self, inputs):
-        return [super(TokenEmbedding, self).call(inputs), tf.multiply(self.embeddings,1)]
+        return [super(TokenEmbedding, self).call(inputs), tf.multiply(self.embeddings, 1)]
 
 
 def get_embedding(inputs, token_num, pos_num, embed_dim, dropout_rate=0.1, trainable=True):

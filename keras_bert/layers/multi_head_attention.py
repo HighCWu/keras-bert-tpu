@@ -5,7 +5,6 @@ import tensorflow as tf
 
 class ScaledDotProductAttention(keras.layers.Layer):
     """The attention layer that takes three inputs representing queries, keys and values.
-    \text{Attention}(Q, K, V) = \text{softmax}(\frac{Q K^T}{\sqrt{d_k}}) V
     See: https://arxiv.org/pdf/1706.03762.pdf
     """
 
@@ -233,7 +232,7 @@ class MultiHeadAttention(keras.layers.Layer):
     def call(self, inputs, mask=None):
         if isinstance(inputs, list):
             q, k, v = inputs
-            y_shape = self.compute_output_shape([K.shape(q),K.shape(k),K.shape(v)])
+            y_shape = self.compute_output_shape([K.shape(q), K.shape(k), K.shape(v)])
         else:
             q = k = v = inputs
             y_shape = self.compute_output_shape(K.shape(inputs))
@@ -273,5 +272,5 @@ class MultiHeadAttention(keras.layers.Layer):
             y += self.bo
         if self.activation is not None:
             y = self.activation(y)
-        y = K.reshape(y,y_shape)
+        y = K.reshape(y, y_shape)
         return y

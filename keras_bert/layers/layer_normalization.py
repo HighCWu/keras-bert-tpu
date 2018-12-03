@@ -1,6 +1,7 @@
 import keras
 import keras.backend as K
-from tensorflow.python.keras import engine # pylint: disable=E0611
+from tensorflow.python.keras import engine  # pylint: disable=E0611
+
 
 class LayerNormalization(keras.layers.Layer):
 
