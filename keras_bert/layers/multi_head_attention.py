@@ -233,8 +233,10 @@ class MultiHeadAttention(keras.layers.Layer):
     def call(self, inputs, mask=None):
         if isinstance(inputs, list):
             q, k, v = inputs
+            y_shape = self.compute_output_shape([K.shape(q),K.shape(k),K.shape(v)])
         else:
             q = k = v = inputs
+            y_shape = self.compute_output_shape(K.shape(inputs))
         if isinstance(mask, list):
             q_mask, k_mask, v_mask = mask
         else:
@@ -271,4 +273,5 @@ class MultiHeadAttention(keras.layers.Layer):
             y += self.bo
         if self.activation is not None:
             y = self.activation(y)
+        y = K.reshape(y,y_shape)
         return y
